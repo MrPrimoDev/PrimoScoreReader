@@ -1,11 +1,10 @@
-import express from 'express';
-import cors from 'cors';
-import path from 'path';
-import fs from 'fs';
-import os from 'os';
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+const fs = require('fs');
+const os = require('os');
 
 const app = express();
-
 app.use(cors());
 
 // Automatyczne wykrywanie systemu i ustawienie ścieżki
