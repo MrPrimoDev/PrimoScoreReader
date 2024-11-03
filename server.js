@@ -5,7 +5,19 @@ const fs = require('fs');
 const os = require('os');
 
 const app = express();
-app.use(cors());
+
+// Dodaj szczegółową konfigurację CORS
+app.use(cors({
+    origin: 'http://localhost:5173', // lub inny port na którym działa Vite
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type']
+}));
+
+// Dodaj middleware do logowania zapytań
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
 
 // Automatyczne wykrywanie systemu i ustawienie ścieżki
 const platform = os.platform();
